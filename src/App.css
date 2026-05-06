@@ -134,3 +134,31 @@ body {
     font-size: 1rem !important;
   }
 }
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  background: currentColor;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-split {
+    grid-template-columns: 1fr !important;
+  }
+
+  .login-card,
+  .feature-panel {
+    min-height: auto !important;
+  }
+}
+
