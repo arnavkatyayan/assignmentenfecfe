@@ -15,6 +15,7 @@ export default function LoginPage() {
       const timer = setTimeout(() => {
         setError('');
       }, 4000);
+        return () => clearTimeout(timer);
     }
   },[error]);
   const handleLogin = (e) => {
@@ -224,12 +225,13 @@ export default function LoginPage() {
             lineHeight: '1.6',
             margin: '0.5rem 0',
           }}>
-            <strong>Demo Credentials:</strong>
+            <strong>Guest Credentials:</strong>
           </p>
           <p style={{
             fontSize: '0.85rem',
             color: colors.textSecondary,
             margin: '0.3rem 0',
+            fontWeight: '600',
           }}>
             Username: <strong>arnavk</strong>
           </p>
@@ -237,6 +239,7 @@ export default function LoginPage() {
             fontSize: '0.85rem',
             color: colors.textSecondary,
             margin: '0.3rem 0',
+            fontWeight: '600',
           }}>
             Password: <strong>1234</strong>
           </p>
