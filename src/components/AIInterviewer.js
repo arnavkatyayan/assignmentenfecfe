@@ -7,40 +7,51 @@ const AIInterviewer = () => {
   return (
     <div
       style={{
-        background: colors.surface,
-        borderRadius: '12px',
-        padding: '1.5rem',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+        background: `linear-gradient(135deg, ${colors.surface} 0%, rgba(102,126,234,0.05) 100%)`,
+        borderRadius: '16px',
+        padding: '1.8rem',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+        border: '1px solid rgba(102,126,234,0.1)',
+        transition: 'all 0.3s ease',
+        animation: 'slideInLeft 0.6s ease',
       }}
     >
-      <h3 style={{ marginBottom: '1rem', color: colors.text }}>AI Interviewer</h3>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
+        <div style={{ fontSize: '1.5rem' }}>🎥</div>
+        <h3 style={{ margin: 0, color: colors.text, fontWeight: '600', fontSize: '1.1rem' }}>AI Interviewer</h3>
+      </div>
       <div
         style={{
           width: '100%',
-          height: '200px',
-          borderRadius: '8px',
+          height: '240px',
+          borderRadius: '12px',
           overflow: 'hidden',
-          background: colors.background,
+          background: `linear-gradient(135deg, #1f2937 0%, #111827 100%)`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          border: '2px solid rgba(102,126,234,0.2)',
+          position: 'relative',
+          boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.2)',
         }}
       >
         <div
           style={{
-            background: '#333',
-            color: 'white',
-            padding: '2rem',
-            borderRadius: '8px',
+            color: '#888',
             textAlign: 'center',
-            width: '100%',
-            height: '100%',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
+            gap: '1rem',
           }}
         >
-          AI Interviewer Video Feed
+          <div style={{
+            fontSize: '3rem',
+            opacity: 0.6,
+            animation: 'float 3s ease-in-out infinite'
+          }}>🤖</div>
+          <div style={{ fontSize: '1rem', fontWeight: '500' }}>AI Interviewer Video Feed</div>
+          <div style={{ fontSize: '0.85rem', opacity: 0.6 }}>Ready to evaluate your performance</div>
         </div>
       </div>
     </div>

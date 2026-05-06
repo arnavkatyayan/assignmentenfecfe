@@ -2,37 +2,63 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 
 const Header = ({ onThemeToggle }) => {
-  const { isDarkMode, colors } = useTheme();
+  const { isDarkMode } = useTheme();
 
   return (
     <header
       style={{
-        background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
-        color: colors.text,
-        padding: '1rem 2rem',
+        background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
+        color: 'white',
+        padding: '1.2rem 2rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 8px 32px rgba(102, 126, 234, 0.15)',
+        backdropFilter: 'blur(10px)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        animation: 'slideInLeft 0.6s ease',
       }}
     >
-      <h1 style={{ fontSize: '1.8rem', margin: 0 }}>AI Interview Platform</h1>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+        <div style={{
+          fontSize: '1.8rem',
+          animation: 'float 3s ease-in-out infinite'
+        }}>💼</div>
+        <h1 style={{
+          fontSize: '1.8rem',
+          margin: 0,
+          fontWeight: '700',
+          letterSpacing: '-0.5px'
+        }}>InterviewVault</h1>
+      </div>
       <button
         onClick={onThemeToggle}
         style={{
-          background: 'rgba(255,255,255,0.2)',
-          border: 'none',
-          color: colors.text,
-          padding: '0.5rem 1rem',
-          borderRadius: '20px',
+          background: 'rgba(255,255,255,0.15)',
+          border: '1px solid rgba(255,255,255,0.3)',
+          color: 'white',
+          padding: '0.6rem 1.2rem',
+          borderRadius: '25px',
           cursor: 'pointer',
-          fontSize: '1rem',
-          transition: 'background 0.3s ease',
+          fontSize: '0.95rem',
+          fontWeight: '500',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          backdropFilter: 'blur(10px)',
         }}
-        onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.3)'}
-        onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.2)'}
+        onMouseEnter={(e) => {
+          e.target.style.background = 'rgba(255,255,255,0.25)';
+          e.target.style.transform = 'translateY(-2px)';
+          e.target.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = 'rgba(255,255,255,0.15)';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = 'none';
+        }}
       >
-        {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+        {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
       </button>
     </header>
   );

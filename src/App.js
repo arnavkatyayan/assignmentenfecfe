@@ -5,7 +5,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import InterviewPage from './pages/InterviewPage';
 import './App.css';
-
+import LoginPage from './pages/LoginPage';
 const AppContent = () => {
   const { colors, toggleTheme } = useTheme();
 
@@ -21,7 +21,8 @@ const AppContent = () => {
     >
       <Header onThemeToggle={toggleTheme} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<HomePage />} />
         <Route path="/interview" element={<InterviewPage />} />
       </Routes>
     </div>

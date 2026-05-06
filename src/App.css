@@ -5,8 +5,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -16,22 +24,113 @@ body {
   min-height: 100vh;
 }
 
-/* Responsive design */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); }
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding: clamp(1rem, 2vw, 1.5rem) !important;
+  }
+  
+  /* Grid layout becomes single column */
+  div[style*="grid-template-columns: 1fr 2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    height: auto !important;
+  }
+}
+
 @media (max-width: 768px) {
   main {
     padding: 1rem !important;
   }
 
-  div[style*="grid-template-columns: 1fr 2fr"] {
+  div[style*="grid-template-columns: 1fr 2fr"],
+  div[style*="grid-template-columns: 1fr"] {
     grid-template-columns: 1fr !important;
     height: auto !important;
   }
 
   div[style*="display: grid"] {
     grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
   button {
+    font-size: clamp(0.8rem, 1rem, 1.1rem) !important;
+    padding: 0.6rem 1rem !important;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+  
+  textarea {
+    font-size: 12px !important;
+  }
+}
+
+/* Small devices */
+@media (max-width: 480px) {
+  main {
+    padding: 0.75rem !important;
+  }
+  
+  button {
     width: 100% !important;
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  h1 {
+    font-size: 1.2rem !important;
+  }
+  
+  h2, h3 {
+    font-size: 1rem !important;
   }
 }
