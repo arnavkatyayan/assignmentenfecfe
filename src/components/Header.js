@@ -1,8 +1,14 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = ({ onThemeToggle }) => {
   const { isDarkMode } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleLogout = () => {
+    navigate('/');
+  };
 
   return (
     <header
@@ -33,33 +39,64 @@ const Header = ({ onThemeToggle }) => {
           letterSpacing: '-0.5px'
         }}>InterviewVault</h1>
       </div>
-      <button
-        onClick={onThemeToggle}
-        style={{
-          background: 'rgba(255,255,255,0.15)',
-          border: '1px solid rgba(255,255,255,0.3)',
-          color: 'white',
-          padding: '0.6rem 1.2rem',
-          borderRadius: '25px',
-          cursor: 'pointer',
-          fontSize: '0.95rem',
-          fontWeight: '500',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          backdropFilter: 'blur(10px)',
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.background = 'rgba(255,255,255,0.25)';
-          e.target.style.transform = 'translateY(-2px)';
-          e.target.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.background = 'rgba(255,255,255,0.15)';
-          e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = 'none';
-        }}
-      >
-        {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-      </button>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <button
+          onClick={onThemeToggle}
+          style={{
+            background: 'rgba(255,255,255,0.15)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            color: 'white',
+            padding: '0.6rem 1.2rem',
+            borderRadius: '25px',
+            cursor: 'pointer',
+            fontSize: '0.95rem',
+            fontWeight: '500',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            backdropFilter: 'blur(10px)',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = 'rgba(255,255,255,0.25)';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = 'rgba(255,255,255,0.15)';
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+          }}
+        >
+          {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+        </button>
+        {location.pathname !== '/' && location.pathname !== '/login' && (
+        <button
+          onClick={handleLogout}
+             style={{
+            background: 'rgba(255,255,255,0.15)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            color: 'white',
+            padding: '0.6rem 1.2rem',
+            borderRadius: '25px',
+            cursor: 'pointer',
+            fontSize: '0.95rem',
+            fontWeight: '500',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            backdropFilter: 'blur(10px)',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = 'rgba(255,255,255,0.25)';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = 'rgba(255,255,255,0.15)';
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+          }}
+        >
+         ↩️ Logout
+        </button>)}
+      </div>
     </header>
   );
 };

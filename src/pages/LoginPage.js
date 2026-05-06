@@ -52,6 +52,7 @@ export default function LoginPage() {
 
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, currentFeatureIndex]);
+
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
@@ -116,18 +117,144 @@ export default function LoginPage() {
         }}
       />
 
-          <div
-              className="login-split"
+      <div
+        className="login-split"
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'stretch',
+          justifyContent: 'space-between',
+          width: '100%',
+          maxWidth: '1200px',
+          gap: '2rem',
+        }}
+      >
+        {/* ✅ FEATURE PANEL — LEFT SIDE */}
+        <div
+          className="feature-panel"
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            borderRadius: '24px',
+            padding: '3rem',
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
+            color: 'white',
+            minHeight: '560px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            boxShadow: '0 30px 90px rgba(59, 130, 246, 0.18)',
+          }}
+        >
+          <div>
+            <span
               style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'stretch',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  maxWidth: '1200px',
-                  gap: '2rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                background: 'rgba(255, 255, 255, 0.14)',
+                border: '1px solid rgba(255, 255, 255, 0.18)',
+                borderRadius: '999px',
+                padding: '0.65rem 1rem',
+                fontSize: '0.9rem',
+                fontWeight: '700',
+                letterSpacing: '0.02em',
               }}
-          >
+            >
+              ✨ AI-powered interview experience
+            </span>
+
+            <h2
+              style={{
+                marginTop: '1.8rem',
+                fontSize: '2.3rem',
+                lineHeight: '1.05',
+                fontWeight: '800',
+              }}
+            >
+              A smarter way to practice coding interviews.
+            </h2>
+
+            <p
+              style={{
+                marginTop: '1.2rem',
+                color: 'rgba(255, 255, 255, 0.88)',
+                fontSize: '1rem',
+                lineHeight: '1.8',
+                maxWidth: '520px',
+              }}
+            >
+              Learn faster, stay focused, and build confidence with every question.
+            </p>
+
+            <div
+              className="typewriter"
+              style={{
+                marginTop: '2rem',
+                padding: '1.4rem 1.2rem',
+                borderRadius: '18px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)',
+                minHeight: '100px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.05rem',
+                fontWeight: '600',
+                lineHeight: '1.5',
+                letterSpacing: '0.01em',
+              }}
+            >
+              <span>{displayText}</span>
+              <span className="typewriter-cursor" style={{ marginLeft: '0.5rem' }}>|</span>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '2rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '1rem' }}>
+              {[
+                'Instant coding response save',
+                'Progress tracking for every question',
+                'Clean, professional interview UI',
+                'Performance summary after submission',
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'auto 1fr',
+                    gap: '1rem',
+                    alignItems: 'center',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    borderRadius: '18px',
+                    padding: '1rem 1.2rem',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '2.7rem',
+                      height: '2.7rem',
+                      borderRadius: '50%',
+                      background: 'rgba(255, 255, 255, 0.18)',
+                      display: 'grid',
+                      placeItems: 'center',
+                      fontSize: '1rem',
+                      color: 'white',
+                    }}
+                  >
+                    {index + 1}
+                  </div>
+                  <span style={{ color: 'rgba(255, 255, 255, 0.94)', fontWeight: '600' }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* ✅ LOGIN CARD — RIGHT SIDE */}
         <div
           className="login-card"
           style={{
@@ -282,7 +409,7 @@ export default function LoginPage() {
           >
             <p
               style={{
-                fontSize: '0.85rem',
+                fontSize: '1.85rem',
                 color: colors.textSecondary,
                 lineHeight: '1.6',
                 margin: '0.5rem 0',
@@ -292,7 +419,7 @@ export default function LoginPage() {
             </p>
             <p
               style={{
-                fontSize: '0.85rem',
+                fontSize: '1.00rem',
                 color: colors.textSecondary,
                 margin: '0.3rem 0',
                 fontWeight: '600',
@@ -302,7 +429,7 @@ export default function LoginPage() {
             </p>
             <p
               style={{
-                fontSize: '0.85rem',
+                fontSize: '1.00rem',
                 color: colors.textSecondary,
                 margin: '0.3rem 0',
                 fontWeight: '600',
@@ -311,131 +438,9 @@ export default function LoginPage() {
               Password: <strong>1234</strong>
             </p>
           </div>
+          <p className='version'> Version 1.0.0 | 2026 | Arnav Katyayan</p>
         </div>
 
-        <div
-          className="feature-panel"
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            borderRadius: '24px',
-            padding: '3rem',
-            overflow: 'hidden',
-            background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
-            color: 'white',
-            minHeight: '560px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            boxShadow: '0 30px 90px rgba(59, 130, 246, 0.18)',
-          }}
-        >
-          <div>
-            <span
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                background: 'rgba(255, 255, 255, 0.14)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                borderRadius: '999px',
-                padding: '0.65rem 1rem',
-                fontSize: '0.9rem',
-                fontWeight: '700',
-                letterSpacing: '0.02em',
-              }}
-            >
-              ✨ AI-powered interview experience
-            </span>
-
-            <h2
-              style={{
-                marginTop: '1.8rem',
-                fontSize: '2.3rem',
-                lineHeight: '1.05',
-                fontWeight: '800',
-              }}
-            >
-              A smarter way to practice coding interviews.
-            </h2>
-
-            <p
-              style={{
-                marginTop: '1.2rem',
-                color: 'rgba(255, 255, 255, 0.88)',
-                fontSize: '1rem',
-                lineHeight: '1.8',
-                maxWidth: '520px',
-              }}
-            >
-              Learn faster, stay focused, and build confidence with every question.
-            </p>
-
-            <div
-              className="typewriter"
-              style={{
-                marginTop: '2rem',
-                padding: '1.4rem 1.2rem',
-                borderRadius: '18px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)',
-                minHeight: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.05rem',
-                fontWeight: '600',
-                lineHeight: '1.5',
-                letterSpacing: '0.01em',
-              }}
-            >
-              <span>{displayText}</span>
-              <span className="typewriter-cursor" style={{ marginLeft: '0.5rem' }}>|</span>
-            </div>
-          </div>
-
-          <div style={{ marginTop: '2rem' }}>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '1rem' }}>
-              {[
-                'Instant coding response save',
-                'Progress tracking for every question',
-                'Clean, professional interview UI',
-                'Performance summary after submission',
-              ].map((item, index) => (
-                <li
-                  key={index}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'auto 1fr',
-                    gap: '1rem',
-                    alignItems: 'center',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.16)',
-                    borderRadius: '18px',
-                    padding: '1rem 1.2rem',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '2.7rem',
-                      height: '2.7rem',
-                      borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.18)',
-                      display: 'grid',
-                      placeItems: 'center',
-                      fontSize: '1rem',
-                      color: 'white',
-                    }}
-                  >
-                    {index + 1}
-                  </div>
-                  <span style={{ color: 'rgba(255, 255, 255, 0.94)', fontWeight: '600' }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

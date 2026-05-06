@@ -161,4 +161,8 @@ body {
     min-height: auto !important;
   }
 }
-
+.version {
+  position: absolute;
+  bottom: 28px;
+  right: 200px;
+}
