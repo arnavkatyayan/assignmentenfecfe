@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-
+import { useEffect } from 'react';
 export default function LoginPage() {
   const navigate = useNavigate();
   const { colors } = useTheme();
@@ -10,6 +10,13 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [focusedField, setFocusedField] = useState(null);
 
+  useEffect(()=> {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError('');
+      }, 4000);
+    }
+  },[error]);
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
@@ -74,7 +81,6 @@ export default function LoginPage() {
         }}
       />
 
-      {/* Main login card */}
       <div
         style={{
           position: 'relative',
@@ -89,7 +95,7 @@ export default function LoginPage() {
           animation: 'fadeIn 0.8s ease',
         }}
       >
-        {/* Header with emoji */}
+
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div style={{
             fontSize: '4rem',
@@ -115,9 +121,7 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleLogin}>
-          {/* Username field */}
           <div style={{ marginBottom: '1.5rem' }}>
             <label htmlFor="username" style={{
               display: 'block',
@@ -140,7 +144,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Password field */}
           <div style={{ marginBottom: '1.5rem' }}>
             <label htmlFor="password" style={{
               display: 'block',
