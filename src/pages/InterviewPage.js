@@ -19,7 +19,7 @@ const InterviewPage = () => {
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
   const [code, setCode] = useState('');
   const [feedback, setFeedback] = useState('');
-   const [questions, setQuestions] = useState([
+   const questions = ([
     {
       id: 1,
       title: 'Two Sum',
