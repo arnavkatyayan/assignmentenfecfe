@@ -86,7 +86,7 @@ export default function LoginPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem',
+        padding: 'clamp(1rem, 4vw, 2rem)',
         background: `linear-gradient(135deg, ${colors.surface} 0%, rgba(102, 126, 234, 0.05) 100%)`,
       }}
     >
@@ -125,8 +125,8 @@ export default function LoginPage() {
           alignItems: 'stretch',
           justifyContent: 'space-between',
           width: '100%',
-          maxWidth: '1200px',
-          gap: '2rem',
+          maxWidth: 'clamp(320px, 95vw, 1200px)',
+          gap: 'clamp(1rem, 3vw, 2rem)',
         }}
       >
         {/* ✅ FEATURE PANEL — LEFT SIDE */}
@@ -136,11 +136,11 @@ export default function LoginPage() {
             position: 'relative',
             zIndex: 1,
             borderRadius: '24px',
-            padding: '3rem',
+            padding: 'clamp(2rem, 5vw, 3rem)',
             overflow: 'hidden',
             background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
             color: 'white',
-            minHeight: '560px',
+            minHeight: 'clamp(480px, 60vh, 560px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -168,7 +168,7 @@ export default function LoginPage() {
             <h2
               style={{
                 marginTop: '1.8rem',
-                fontSize: '2.3rem',
+                fontSize: 'clamp(1.8rem, 4vw, 2.3rem)',
                 lineHeight: '1.05',
                 fontWeight: '800',
               }}
@@ -180,7 +180,7 @@ export default function LoginPage() {
               style={{
                 marginTop: '1.2rem',
                 color: 'rgba(255, 255, 255, 0.88)',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                 lineHeight: '1.8',
                 maxWidth: '520px',
               }}
@@ -265,7 +265,7 @@ export default function LoginPage() {
             borderRadius: '24px',
             boxShadow: '0 30px 90px rgba(15, 23, 42, 0.12)',
             border: `1px solid ${colors.surface === '#f8fafc' ? 'rgba(102, 126, 234, 0.08)' : 'rgba(102, 126, 234, 0.14)'}`,
-            padding: '3rem',
+            padding: 'clamp(2rem, 5vw, 3rem)',
             animation: 'fadeIn 0.8s ease',
             overflow: 'hidden',
           }}
@@ -273,7 +273,7 @@ export default function LoginPage() {
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <div
               style={{
-                fontSize: '4rem',
+                fontSize: 'clamp(3rem, 8vw, 4rem)',
                 marginBottom: '1rem',
                 animation: 'float 4s ease-in-out infinite',
               }}
@@ -282,7 +282,7 @@ export default function LoginPage() {
             </div>
             <h1
               style={{
-                fontSize: '2rem',
+                fontSize: 'clamp(1.6rem, 4vw, 2rem)',
                 color: colors.text,
                 fontWeight: '700',
                 marginBottom: '0.5rem',
@@ -293,7 +293,7 @@ export default function LoginPage() {
             <p
               style={{
                 color: colors.textSecondary,
-                fontSize: '0.95rem',
+                fontSize: 'clamp(0.85rem, 2vw, 0.95rem)',
                 lineHeight: '1.6',
               }}
             >
@@ -438,7 +438,6 @@ export default function LoginPage() {
               Password: <strong>1234</strong>
             </p>
           </div>
-          <p className='version'> Version 1.0.0 | 2026 | Arnav Katyayan</p>
         </div>
 
       </div>

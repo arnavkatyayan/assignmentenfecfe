@@ -7,7 +7,7 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
   const { colors, isDarkMode } = useTheme();
 
   const handleBackHome = () => {
-    navigate('/');
+    navigate('/dashboard');
   };
 
   const stats = [

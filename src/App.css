@@ -161,9 +161,164 @@ body {
     min-height: auto !important;
   }
 }
-.version {
-  position: absolute;
-  bottom: 28px;
-  right: 200px;
-  font-weight: 600;
+
+@media (max-width: 1024px) {
+  .login-split {
+    max-width: 1000px !important;
+    gap: 1.5rem !important;
+  }
+
+  .feature-panel {
+    padding: 2.5rem !important;
+    min-height: 500px !important;
+  }
+
+  .login-card {
+    padding: 2.5rem !important;
+  }
+
+  .feature-panel h2 {
+    font-size: 2rem !important;
+  }
+
+  .feature-panel p {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-split {
+    flex-direction: column !important;
+    max-width: 100% !important;
+    gap: 1.5rem !important;
+    padding: 0 1rem !important;
+  }
+
+  .feature-panel {
+    padding: 2rem !important;
+    min-height: auto !important;
+    order: 2;
+  }
+
+  .login-card {
+    padding: 2rem !important;
+    order: 1;
+  }
+
+  .feature-panel h2 {
+    font-size: 1.8rem !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .feature-panel p {
+    font-size: 0.9rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .typewriter {
+    padding: 1.2rem 1rem !important;
+    font-size: 1rem !important;
+    min-height: 80px !important;
+  }
+
+  .login-card h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .login-card .float {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-split {
+    padding: 0 0.75rem !important;
+    gap: 1rem !important;
+  }
+
+  .feature-panel {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+
+  .login-card {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+
+  .feature-panel h2 {
+    font-size: 1.5rem !important;
+    margin-top: 1.2rem !important;
+  }
+
+  .feature-panel p {
+    font-size: 0.85rem !important;
+    margin-top: 0.8rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .typewriter {
+    padding: 1rem 0.8rem !important;
+    font-size: 0.95rem !important;
+    min-height: 70px !important;
+    border-radius: 12px !important;
+  }
+
+  .login-card h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .login-card p {
+    font-size: 0.9rem !important;
+  }
+
+  .login-card .float {
+    font-size: 2.5rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .feature-panel ul li {
+    padding: 0.8rem 1rem !important;
+    gap: 0.8rem !important;
+  }
+
+  .feature-panel ul li div {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .feature-panel ul li span {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-split {
+    padding: 0 0.5rem !important;
+  }
+
+  .feature-panel,
+  .login-card {
+    padding: 1.2rem !important;
+  }
+
+  .feature-panel h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .login-card h1 {
+    font-size: 1.4rem !important;
+  }
+
+  .typewriter {
+    padding: 0.8rem 0.6rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  div[style*="position: fixed"][style*="blur(60px)"] {
+    display: none !important;
+  }
 }
