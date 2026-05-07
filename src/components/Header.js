@@ -68,7 +68,7 @@ const Header = ({ onThemeToggle }) => {
         >
           {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
         </button>
-        {location.pathname !== '/' && location.pathname !== '/login' && (
+        {location.pathname !== '/' && location.pathname !== '/login' && location.pathname!=='/interview' && (
         <button
           onClick={handleLogout}
              style={{
