@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useState, useEffect } from 'react';
-const ProgressSection = ({ currentQuestion, totalQuestions }) => {
+const ProgressSection = ({ currentQuestion, totalQuestions, solvedQuestions = 0 }) => {
   const { colors } = useTheme();
-  const [progress, setProgress] = useState(currentQuestion / totalQuestions * 100);
+  const [progress, setProgress] = useState(solvedQuestions / totalQuestions * 100);
 
   useEffect(() => {
-    setProgress((currentQuestion / totalQuestions) * 100);
-  }, [currentQuestion, totalQuestions]);
+    setProgress((solvedQuestions / totalQuestions) * 100);
+  }, [solvedQuestions, totalQuestions]);
 
   const getProgressColor = (percentage) => {
     if (percentage <= 20) {
@@ -59,9 +59,9 @@ const ProgressSection = ({ currentQuestion, totalQuestions }) => {
         ></div>
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <p style={{ color: colors.textSecondary, margin: 0, fontWeight: '500' }}>
-          Question <span style={{ color: colors.text, fontWeight: '700', fontSize: '1.1rem' }}>{currentQuestion}</span> of <span style={{ color: colors.text, fontWeight: '700', fontSize: '1.1rem' }}>{totalQuestions}</span>
+          <span style={{ color: colors.text, fontWeight: '700', fontSize: '1.1rem' }}>{solvedQuestions}</span> of <span style={{ color: colors.text, fontWeight: '700', fontSize: '1.1rem' }}>{totalQuestions}</span> Questions Solved
         </p>
         <div style={{
           background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',

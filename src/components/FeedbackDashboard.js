@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
-const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
+const FeedbackDashboard = ({ totalQuestions, solvedQuestions = totalQuestions, timeUsed }) => {
   const navigate = useNavigate();
   const { colors, isDarkMode } = useTheme();
 
@@ -10,10 +10,18 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
     navigate('/dashboard');
   };
 
+  const performanceMap = new Map();
+  performanceMap.set(0, { label: 'Needs Improvement', color: '#ef4444', emoji: '😞' });
+  performanceMap.set(1, { label: 'Good', color: '#f59e0b', emoji: '🙂' });
+  performanceMap.set(2, { label: 'Excellent', color: '#10b981', emoji: '😊' });
+performanceMap.set(3, { label: 'Outstanding', color: '#3b82f6', emoji: '😎' });
+  const performanceLevel = Math.floor((solvedQuestions / totalQuestions) * 4);
+  const performance = performanceMap.get(performanceLevel);
+
   const stats = [
     {
-      label: 'Questions Completed',
-      value: totalQuestions,
+      label: 'Questions Solved',
+      value: `${solvedQuestions}/${totalQuestions}`,
       icon: '✅',
       lightBg: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
       darkBg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%)',
@@ -31,7 +39,7 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
     },
     {
       label: 'Interview Status',
-      value: 'Completed',
+      value: solvedQuestions === totalQuestions ? 'Perfect! 🏆' : 'Completed ✓',
       icon: '🎯',
       lightBg: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
       darkBg: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%)',
@@ -65,7 +73,6 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
         border: `1px solid ${isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(102,126,234,0.1)'}`,
       }}>
 
-        {/* Celebration Header */}
         <div style={{
           background: isDarkMode
             ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
@@ -213,7 +220,7 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
               fontWeight: '700',
               letterSpacing: '-0.5px'
             }}>
-              Outstanding Performance!
+              {performance.emoji} {performance.label}
             </h3>
             <p style={{
               color: colors.textSecondary,
@@ -222,7 +229,7 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
               lineHeight: '1.7',
               fontWeight: '400'
             }}>
-              You've demonstrated excellent problem-solving skills by completing all <strong>{totalQuestions}</strong> coding questions in <strong>{timeUsed}</strong>.
+              You've demonstrated your problem-solving skills by completing <strong>{solvedQuestions}/{totalQuestions}</strong> coding questions in <strong>{timeUsed}</strong>.
               Your responses have been recorded and will be reviewed by our advanced AI evaluation system.
             </p>
           </div>
@@ -241,7 +248,7 @@ const FeedbackDashboard = ({ totalQuestions, timeUsed }) => {
           }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '0.9rem', color: colors.textSecondary, marginBottom: '0.5rem' }}>Questions Solved</div>
-              <div style={{ fontSize: '2rem', fontWeight: '700', color: colors.text }}>{totalQuestions}/5</div>
+              <div style={{ fontSize: '2rem', fontWeight: '700', color: colors.text }}>{solvedQuestions}/{totalQuestions}</div>
             </div>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '0.9rem', color: colors.textSecondary, marginBottom: '0.5rem' }}>Time Taken</div>

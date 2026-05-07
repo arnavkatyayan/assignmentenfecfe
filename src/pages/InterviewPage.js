@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import AIInterviewer from '../components/AIInterviewer';
 import CandidatePreview from '../components/CandidatePreview';
@@ -18,8 +18,22 @@ const InterviewPage = () => {
   const [totalQuestions] = useState(5);
   const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes
   const [code, setCode] = useState('');
-  const [feedback, setFeedback] = useState('');
-   const questions = ([
+  const [feedback, setFeedback] = useState('');  const [solvedQuestions, setSolvedQuestions] = useState(0);
+
+  const countSolvedQuestions = useCallback(() => {
+    let count = 0;
+    for (let i = 0; i < totalQuestions; i++) {
+      const response = localStorage.getItem(`coding_response_${i}`);
+      if (response && response.trim().length > 0) {
+        count++;
+      }
+    }
+    return count;
+  }, [totalQuestions]);
+
+  useEffect(() => {
+    setSolvedQuestions(countSolvedQuestions());
+  }, [countSolvedQuestions]);   const questions = ([
     {
       id: 1,
       title: 'Two Sum',
@@ -169,6 +183,7 @@ const InterviewPage = () => {
               <ProgressSection
                 currentQuestion={currentQuestion}
                 totalQuestions={totalQuestions}
+                solvedQuestions={solvedQuestions}
               />
               <CodingSection
                 currentQuestion={currentQuestion}
@@ -179,6 +194,7 @@ const InterviewPage = () => {
                 onPreviousQuestion={handlePreviousQuestion}
                 onSubmitInterview={handleSubmitInterview}
                 questions={questions}
+                onCodeChange={() => setSolvedQuestions(countSolvedQuestions())}
               />
             </div>
           </>
@@ -187,6 +203,7 @@ const InterviewPage = () => {
         {feedback === 'completed' && (
           <FeedbackDashboard
             totalQuestions={totalQuestions}
+            solvedQuestions={solvedQuestions}
             timeUsed={formatTime(1800 - timeLeft)}
           />
         )}

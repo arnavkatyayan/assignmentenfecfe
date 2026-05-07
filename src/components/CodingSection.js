@@ -10,24 +10,32 @@ const CodingSection = ({
   onPreviousQuestion,
   onSubmitInterview,
   questions,
+  onCodeChange,
 }) => {
   const { colors } = useTheme();
 
   
   useEffect(() => {
     const savedCode = localStorage.getItem(`coding_response_${currentQuestion - 1}`);
-    if (savedCode !== null) { 
+    if (savedCode !== null) {
       setCode(savedCode);
     } else {
-      setCode(''); 
+      setCode('');
     }
   }, [currentQuestion, setCode]);
 
   useEffect(() => {
-    if (code) {
-      localStorage.setItem(`coding_response_${currentQuestion - 1}`, code);
+    if (code !== undefined) {
+      if (code.trim() === '') {
+        localStorage.removeItem(`coding_response_${currentQuestion - 1}`);
+      } else {
+        localStorage.setItem(`coding_response_${currentQuestion - 1}`, code);
+      }
+      if (onCodeChange) {
+        onCodeChange();
+      }
     }
-  }, [code, currentQuestion]);
+  }, [code, currentQuestion, onCodeChange]);
 
   return (
     <div
