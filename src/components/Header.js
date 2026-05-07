@@ -37,7 +37,6 @@ const Header = ({ onThemeToggle }) => {
           fontWeight: '700',
           letterSpacing: '-0.5px',
           fontFamily:'Inter, sans-serif',
-          fontWeight: '700',
         }}>InterviewVault</h1>
       </div>
 
