@@ -33,10 +33,11 @@ const Header = ({ onThemeToggle }) => {
           animation: 'float 3s ease-in-out infinite'
         }}>💼</div>
         <h1 style={{
-          fontSize: '1.8rem',
           margin: 0,
           fontWeight: '700',
-          letterSpacing: '-0.5px'
+          letterSpacing: '-0.5px',
+          fontFamily:'Inter, sans-serif',
+          fontWeight: '700',
         }}>InterviewVault</h1>
       </div>
 

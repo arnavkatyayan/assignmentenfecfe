@@ -1,10 +1,25 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
-
+import { useState, useEffect } from 'react';
 const ProgressSection = ({ currentQuestion, totalQuestions }) => {
   const { colors } = useTheme();
-  const progress = (currentQuestion / totalQuestions) * 100;
+  const [progress, setProgress] = useState(currentQuestion / totalQuestions * 100);
 
+  useEffect(() => {
+    setProgress((currentQuestion / totalQuestions) * 100);
+  }, [currentQuestion, totalQuestions]);
+
+  const getProgressColor = (percentage) => {
+    if (percentage <= 20) {
+      return 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)';
+    } else if (percentage <= 60) {
+      return 'linear-gradient(90deg, #84cc16 0%, #65a30d 100%)';
+    } else if (percentage <= 80) {
+      return 'linear-gradient(90deg, #22c55e 0%, #16a34a 100%)';
+    } else {
+      return 'linear-gradient(90deg, #059669 0%, #047857 100%)';
+    }
+  };
   return (
     <div
       style={{
@@ -36,10 +51,10 @@ const ProgressSection = ({ currentQuestion, totalQuestions }) => {
         <div
           style={{
             height: '100%',
-            background: `linear-gradient(90deg, #667eea 0%, #764ba2 100%)`,
-            transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            background: getProgressColor(progress),
+            transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s ease',
             width: `${progress}%`,
-            boxShadow: '0 0 10px rgba(102, 126, 234, 0.5)',
+            boxShadow: progress <= 20 ? '0 0 10px rgba(239, 68, 68, 0.5)' : progress <= 60 ? '0 0 10px rgba(132, 204, 22, 0.5)' : '0 0 10px rgba(5, 150, 105, 0.5)',
           }}
         ></div>
       </div>
